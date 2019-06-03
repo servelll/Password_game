@@ -1,0 +1,33 @@
+﻿<Window x:Class="Password_game.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Password_game"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid Name="myGrid">
+        <DataGrid Name="dataGrid" LoadingRow="DataGrid_LoadingRow" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="202" Margin="23,47,0,0" VerticalAlignment="Top" Width="294" ItemsSource="{Binding LinesArrayList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" CanUserReorderColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Цифры пароля" Binding="{Binding Path=TryNumbersArray1}" Width="3*" />
+                <DataGridTextColumn Header="R1" Binding="{Binding Path=RightNumbersValue1}" Width="1*" />
+                <DataGridTextColumn Header="R2" Binding="{Binding Path=RightNumbersAndPositionValue1}" Width="1*" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Решать" HorizontalAlignment="Left" Margin="355,29,0,0" VerticalAlignment="Top" Width="75" Click="Solve_Button_Click" RenderTransformOrigin="1.52,-0.3"/>
+        <Button HorizontalAlignment="Left" Margin="322,66,0,0" VerticalAlignment="Top" Width="157" Click="Make_Move_Button_Click" FontSize="9" Height="32">
+            <TextBlock TextAlignment="Center" Height="22" Width="147"> Добавить новую строку <LineBreak/> и подсчитать значения R1\R2</TextBlock>
+        </Button>
+        <TextBox x:Name="PassTextBox" HorizontalAlignment="Left" Height="23" Margin="150,12,0,0" TextWrapping="Wrap" Text="{Binding GetPassword, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="59" RenderTransformOrigin="-1.516,-9.743"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" Margin="96,10,0,0" VerticalAlignment="Top"/>
+        <Button Content="Think about candidates" HorizontalAlignment="Left" Margin="23,257,0,0" VerticalAlignment="Top" Width="157" Click="Button_Click_1"/>
+        <Button x:Name="GenerateButton" HorizontalAlignment="Left" Margin="214,5,0,0" VerticalAlignment="Top" Width="103" Click="Generate_Button_Click" FontSize="9" Height="36">
+            <TextBlock TextAlignment="Center"> Сгенерировать новый <LineBreak/> рандомный пароль</TextBlock>
+        </Button>
+        <TextBox x:Name="LenghtTextBox" HorizontalAlignment="Left" Height="22" Margin="75,13,0,0" TextWrapping="Wrap" Text="{Binding GetLenght, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="21"/>
+        <TextBox x:Name="MakeMoveTextBox" HorizontalAlignment="Left" Height="23" Margin="322,103,0,0" TextWrapping="Wrap" Text="1234" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.611,0.478"/>
+        <TextBox x:Name="CandidatesTextBox" HorizontalAlignment="Left" Height="25" Margin="23,270,0,0" TextWrapping="Wrap" Text="{Binding GetCandidates, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Width="294" FontSize="9" TextAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button x:Name="GenerateNewRandomTryPassButton" Content="Random" HorizontalAlignment="Left" Margin="399,103,0,0" VerticalAlignment="Top" Width="80" Height="23" Click="GenerateNewRandomTryPassButton_Click"/>
+        <Label Content="Длина" HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
